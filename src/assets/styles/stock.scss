@@ -1,0 +1,60 @@
+.stock-cards-wrapper {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20%;
+}
+
+.stock-item-card {
+    width: 90vw;
+    height: 140px;
+    border-radius: 6px;
+    background: #171E24;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
+
+.stock-name, .stock-amount {
+    font-size: 18px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.stock-right-section {
+    margin-top: -8px;
+    div {
+        width: 30vw;
+        height: 32px;
+        border-radius: 6px;
+        background: #0088ff;
+        font-family: 'Poppins', sans-serif;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-left: 35px;
+        margin-top: 8px;
+        cursor: pointer;
+    }
+}
+
+.add-stock-button {
+    width: 100px;
+    height: 35px;
+    border-radius: 6px;
+    background: white;
+    color: black;
+    position: absolute;
+    right: 35px;
+    top: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+    a {
+        text-decoration: none;
+        color: black;
+    }
+}

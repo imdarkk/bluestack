@@ -1,0 +1,47 @@
+.add-tools-screen {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    justify-content: center;
+    align-items: center;
+
+    input, select {
+        width: 90vw;
+        height: 40px;
+        border-radius: 6px;
+        outline: none;
+        background: transparent;
+        border: 1px solid white;
+        color: white;
+        padding-left: 20px;
+        margin-bottom: 6px;
+    }
+    input[placeholder="Amount"] {
+        margin-bottom: 40px;
+    }
+    option {
+        color: black;
+    }
+}
+
+.btn-general-add-tool {
+    width: 90vw;
+    height: 40px;
+    border-radius: 6px;
+    margin-top: 8px;
+    outline: none;
+    border: none;
+    color: white;
+    font-weight: 600;
+    font-size: 16px;
+}
+
+.add {
+    background: rgb(72, 72, 226);
+}
+
+.cancel {
+    background: #334252;
+}
+
+

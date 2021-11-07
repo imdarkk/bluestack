@@ -1,0 +1,57 @@
+.add-stock-screen {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    height: 100vh;
+}
+
+.add-stock-text {
+    margin-top: 40px;
+    font-weight: bold;
+    font-family: 'Poppins', sans-serif;
+    font-size: 24px;
+    margin-bottom: 12px;
+}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+.add-stock-input {
+    width: 85vw;
+    height: 40px;
+    outline: none;
+    background: none;
+    color: white;
+    border: 1px solid white;
+    padding-left: 18px;
+    border-radius: 8px;
+    margin-top: 8px;
+}
+
+.add-stock-btn {
+    width: 85vw;
+    height: 40px;
+    border-radius: 6px;
+    outline: none;
+    border: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 500;
+    font-family: 'Poppins', sans-serif;
+    font-size: 15px;
+    color: white;
+}
+
+.add-stock-finish {
+    margin-top: 24px;
+    background: rgb(72, 72, 226);
+}
+
+.add-stock-cancel {
+    margin-top: 8px;
+    background: #1d2630;
+}

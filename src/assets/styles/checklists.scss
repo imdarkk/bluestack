@@ -1,0 +1,64 @@
+.check-wrapper {
+    font-family: 'Poppins', sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    height: 100vh;
+    padding-left: 20px;
+    padding-right: 20px;
+
+    .warning-general {
+        font-size: 14px;
+        color: rgb(197, 63, 63);
+    }
+
+    .checklist-btn {
+        margin-top: 22px;
+    }
+}
+
+.checklist-type-text {
+    font-weight: bold;
+    font-size: 22px;
+}
+
+.warning-checklist {
+    font-size: 17px;
+    margin-top: 10px;
+    margin-bottom: 15px;
+}
+
+.toolcard-box {
+    width: 86vw;
+    height: 130px;
+    border-radius: 6px;
+    background: hsl(208, 24%, 15%);
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.check-action-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    width: 100%;
+}
+
+.check-action {
+    height: 40px;
+    width: 70px;
+    border-radius: 6px;
+    background: hsl(207, 23%, 19%);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    margin-top: 8px;
+}
+
+.white {
+    background: white;
+}
