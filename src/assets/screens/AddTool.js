@@ -13,7 +13,7 @@ const AddTool = () => {
 
     useEffect(() => {
         (async() => {
-            const getInfo = await fetch('http://localhost:3001/addTool/info');
+            const getInfo = await fetch('http://46.101.219.134:3001/addTool/info');
             const response = await getInfo.json();
             setFetchedCars(response.cars.map((car) => ({
                 license: car.license_plate
@@ -39,7 +39,7 @@ const AddTool = () => {
 
     const handleAddToolRequest = () => {
         (async() => {
-            const addTool = await fetch('http://localhost:3001/addTool/complete', {
+            const addTool = await fetch('http://46.101.219.134:3001/addTool/complete', {
                 method: 'POST',
                 headers: { 
                     'Content-Type': 'application/json',

@@ -10,6 +10,7 @@ import Checklist from "./screens/Checklist";
 import Employees from "./screens/Employees";
 import AddTool from "./screens/AddTool";
 import Tools from "./screens/Tools";
+import EditEmployee from "./screens/EditEmployee";
 
 const UnprotectedRoutes = () => {
     return (
@@ -30,11 +31,12 @@ const ProtectedRoutes = () => {
             <Route exact path="/add/stock" component={AddStock} />
             <Route exact path="/tools" component={Tools} />
             <Route path="/edit/:id" component={EditProduct} />
+            <Route path="/manage/employee/:id" component={EditEmployee} />
             <Route path="/checklist/:type" component={Checklist} />
+            <Route exact path="/add/tools" component={AddTool} />
             {details.role === "admin" && (
                 <>
                     <Route exact path="/employees" component={Employees} />
-                    <Route exact path="/add/tools" component={AddTool} />
                 </>
             )}
             <Route path="*" component={NotFound} />

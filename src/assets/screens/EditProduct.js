@@ -10,7 +10,7 @@ const EditProduct = () => {
     const [pid, setID] = useState();
     useEffect(() => {
         (async() => {
-            const product = await fetch(`http://localhost:3001/getProduct/${id}`);
+            const product = await fetch(`http://46.101.219.134:3001/getProduct/${id}`);
             const response = await product.json();
             setName(response[0].product_name);
             setStock(response[0].in_stock);
@@ -27,7 +27,7 @@ const EditProduct = () => {
 
     const handleEdit = () => {
         (async() => {
-            const edit = await fetch(`http://localhost:3001/edit/${pid}`, {
+            const edit = await fetch(`http://46.101.219.134:3001/edit/${pid}`, {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Accept: 'application/json'},
                 body: JSON.stringify({

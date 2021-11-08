@@ -16,7 +16,7 @@ const AddStock = () => {
 
     const handleAddProduct = () => {
         (async() => {
-            const product = await fetch('http://localhost:3001/addProduct', {
+            const product = await fetch('http://46.101.219.134:3001/addProduct', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json', Accept: 'application/json'},
                 body: JSON.stringify({

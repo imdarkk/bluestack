@@ -20,8 +20,8 @@ const Jobs = () => {
     const { menu } = useAuth();
 
 	let dataManager = new DataManager({
-		url: "http://localhost:3001/getJobs",
-		crudUrl: "http://localhost:3001/updateJobs",
+		url: "http://46.101.219.134:3001/getJobs",
+		crudUrl: "http://46.101.219.134:3001/updateJobs",
 		crossDomain: true,
 		adaptor: new UrlAdaptor()
 	});

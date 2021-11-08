@@ -14,13 +14,13 @@ const Tools = () => {
 
     useEffect(() => {
         (async() => {
-            const car = await fetch('http://localhost:3001/getCars');
+            const car = await fetch('http://46.101.219.134:3001/getCars');
             const responseCars = await car.json();
             setCars(responseCars.map((e) => ({
                 license: e.license_plate
             })));
 
-            const tools = await fetch('http://localhost:3001/getTools');
+            const tools = await fetch('http://46.101.219.134:3001/getTools');
             const responseTools = await tools.json();
             setTools(responseTools.map((e) => ({
                 tool: e.tool,
@@ -29,7 +29,7 @@ const Tools = () => {
                 amount: e.amount
             })));
             
-            const getOneCar = await fetch('http://localhost:3001/getOneCar');
+            const getOneCar = await fetch('http://46.101.219.134:3001/getOneCar');
             const responseOneCar = await getOneCar.json();
             setShowTools(responseOneCar[0].license_plate);
         })();

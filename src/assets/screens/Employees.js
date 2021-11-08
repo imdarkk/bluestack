@@ -11,10 +11,11 @@ const Employees = () => {
     const details = JSON.parse(localStorage.getItem('details'));
     useEffect(() => {
         (async() => {
-            const employees = await fetch(`http://localhost:3001/getEmployees/${details.username}`);
+            const employees = await fetch(`http://46.101.219.134:3001/getEmployees/${details.username}`);
             const response = await employees.json();
 
             setEmployees(response.map((e) => ({
+                id: e.id,
                 username: e.username,
                 email: e.email,
                 name: e.name,
@@ -31,7 +32,7 @@ const Employees = () => {
             <div className="employees-wrapper">
                 {employees && (
                     employees.map((employee) => (
-                        <EmployeeCard username={employee.username} email={employee.email} name={employee.name} surname={employee.surname} phoneNumber={employee.phoneNumber} role={employee.role} />
+                        <EmployeeCard id={employee.id} username={employee.username} email={employee.email} name={employee.name} surname={employee.surname} phoneNumber={employee.phoneNumber} role={employee.role} />
                     ))
                 )}
             </div>

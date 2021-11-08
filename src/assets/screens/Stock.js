@@ -10,7 +10,7 @@ const Stock = () => {
     const [products, setProducts] = useState([]);
     useEffect(() => {
         (async() => {
-            const products = await fetch('http://localhost:3001/getProducts');
+            const products = await fetch('http://46.101.219.134:3001/getProducts');
             const response = await products.json();
            setProducts(response.map((e) => ({
             id: e.id,

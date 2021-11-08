@@ -4,7 +4,7 @@ import { useAuth } from "../auth/auth-context";
 import "../styles/navigation.scss";
 
 const Navigation = () => {
-    const { handleMenu } = useAuth();
+    const { handleMenu, logout } = useAuth();
     const location = useLocation();
     const details = JSON.parse(localStorage.getItem('details'));
     return (
@@ -19,6 +19,7 @@ const Navigation = () => {
                         <Link onClick={handleMenu} to="/create/checklist" className="navigation-text">Create Checklist</Link>
                     </>
             )}
+            <Link onClick={() => {handleMenu(); logout();}} to="/" className="navigation-text">Logout</Link>
         </div>
     );
 };

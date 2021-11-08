@@ -14,13 +14,18 @@ const AuthProvider = (props) => {
             const token = localStorage.getItem('token');
 
             (async() => {
-                const check = await fetch(`http://localhost:3001/checkUser/${token}`);
+                const check = await fetch(`http://46.101.219.134:3001/checkUser/${token}`);
                 const response = await check.json();
 
                 if(response.status === 200) {
-                    setLoggedIn(response.token);
-                    localStorage.setItem('details', JSON.stringify(response.details));
-                    setError("");
+                    if(response.details.role === 'revoked') {
+                        setLoggedIn(false);
+                        setError("Account is revoked, please contact a supervisor");
+                    } else {
+                        localStorage.setItem('details', JSON.stringify(response.details));
+                        setLoggedIn(response.token);
+                        setError("");
+                    }
                 } else {
                     setLoggedIn(false);
                     setError("");
@@ -36,7 +41,7 @@ const AuthProvider = (props) => {
     const login = (username, password) => {
         (async() => {
             if(username && password) {
-                const login = await fetch('http://localhost:3001/signin', {
+                const login = await fetch('http://46.101.219.134:3001/signin', {
                     method: 'POST',
                     headers: { 'Content-Type': 'application/json', Accept: 'application/json'},
                     body: JSON.stringify({
@@ -46,10 +51,15 @@ const AuthProvider = (props) => {
                 });
                 const response = await login.json();
                 if(response.token) {
-                    localStorage.setItem('token', response.token);
-                    setLoggedIn(response.token);
-                    localStorage.setItem('details', JSON.stringify(response.details));
-                    setError("");
+                    if(response.details.role === 'revoked') {
+                        setLoggedIn(false);
+                        setError('Account is revoked, please contact a supervisor');
+                    } else {
+                        localStorage.setItem('details', JSON.stringify(response.details));
+                        localStorage.setItem('token', response.token);
+                        setLoggedIn(response.token);
+                        setError("");
+                    }
                 } else {
                     setLoggedIn(false);
                     setError(response.error);
@@ -61,6 +71,8 @@ const AuthProvider = (props) => {
         })();
     };
     const logout = () => {
+        localStorage.removeItem('details');
+        localStorage.removeItem('token');
         setLoggedIn(false);
     };
     const handleMenu = () => {
