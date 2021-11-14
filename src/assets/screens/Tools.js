@@ -23,6 +23,7 @@ const Tools = () => {
             const tools = await fetch('http://46.101.219.134:3001/getTools');
             const responseTools = await tools.json();
             setTools(responseTools.map((e) => ({
+                id: e.id,
                 tool: e.tool,
                 category: e.category,
                 car: e.car,
@@ -48,7 +49,7 @@ const Tools = () => {
             <div className="container-cards">
                 {tools.map((e) =>
                     showTools == e.car && (
-                        <ToolsCard tool={e.tool} category={e.category} amount={e.amount} car={e.car} />
+                        <ToolsCard id={e.id} tool={e.tool} category={e.category} amount={e.amount} car={e.car} />
                     )
                 )}
             </div>

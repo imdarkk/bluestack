@@ -11,6 +11,9 @@ import Employees from "./screens/Employees";
 import AddTool from "./screens/AddTool";
 import Tools from "./screens/Tools";
 import EditEmployee from "./screens/EditEmployee";
+import EditTool from "./screens/EditTool";
+import ManageCars from "./screens/ManageCars";
+import AddCar from "./screens/AddCar";
 
 const UnprotectedRoutes = () => {
     return (
@@ -29,9 +32,12 @@ const ProtectedRoutes = () => {
             <Route exact path="/jobs" component={Jobs} />
             <Route exact path="/stock" component={Stock} />
             <Route exact path="/add/stock" component={AddStock} />
+            <Route exact path="/add/car" component={AddCar} />
             <Route exact path="/tools" component={Tools} />
             <Route path="/edit/:id" component={EditProduct} />
+            <Route path="/tool/edit/:id" component={EditTool} />
             <Route path="/manage/employee/:id" component={EditEmployee} />
+            <Route exact path="/manage/cars" component={ManageCars} />
             <Route path="/checklist/:type" component={Checklist} />
             <Route exact path="/add/tools" component={AddTool} />
             {details.role === "admin" && (

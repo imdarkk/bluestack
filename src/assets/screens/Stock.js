@@ -15,10 +15,12 @@ const Stock = () => {
            setProducts(response.map((e) => ({
             id: e.id,
             product_name: e.product_name,
-            inStock: e.in_stock
+            inStock: e.in_stock,
+            buyPrice: e.buyingPrice,
+            sellPrice: e.sellPrice,
            })));
         })();
-    }, [products]);
+    }, []);
 
     const { menu } = useAuth();
     return (
@@ -30,7 +32,7 @@ const Stock = () => {
             </div>
             <div className="stock-cards-wrapper">
                 {products.map((e) => (
-                    <StockItem key={e.id} id={e.id} product_name={e.product_name} stock={e.inStock} />
+                    <StockItem key={e.id} id={e.id} buyPrice={e.buyPrice} sellPrice={e.sellPrice} product_name={e.product_name} stock={e.inStock} />
                 ))}
             </div>
         </div>
