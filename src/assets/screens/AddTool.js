@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import React, { useState, useEffect } from "react";
 import { useHistory } from "react-router-dom";
 import "../styles/addTools.scss";
@@ -61,7 +62,7 @@ const AddTool = () => {
     }
 
     return (
-        <div className="add-tools-screen">
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white" className="add-tools-screen">
             <input type="text" className="general-input" placeholder="Tool" value={name} onChange={handleName} />
             <select value={category} onChange={handleCat}>
                 <option value="" disabled>-- Choose category --</option>
@@ -79,7 +80,7 @@ const AddTool = () => {
 
             <button className="btn-general-add-tool add" onClick={handleAddToolRequest}>Add Tool</button>
             <button className="btn-general-add-tool cancel" onClick={() => history.goBack()}>Cancel</button>
-        </div>
+        </Container>
     );
 };
 

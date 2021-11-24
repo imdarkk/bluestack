@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import StockItem from "../components/StockItem";
 import { useAuth } from "../auth/auth-context";
 import { Link } from "react-router-dom";
+import { Container } from "@chakra-ui/react";
 import "../styles/stock.scss";
 
 const Stock = () => {
@@ -24,7 +25,7 @@ const Stock = () => {
 
     const { menu } = useAuth();
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" color="white">
             {menu && <Navigation />}
             <HamburgerButton />
             <div className="add-stock-button">
@@ -35,7 +36,7 @@ const Stock = () => {
                     <StockItem key={e.id} id={e.id} buyPrice={e.buyPrice} sellPrice={e.sellPrice} product_name={e.product_name} stock={e.inStock} />
                 ))}
             </div>
-        </div>
+        </Container>
     );
 };
 

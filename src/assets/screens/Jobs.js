@@ -14,6 +14,7 @@ import { DataManager, UrlAdaptor } from "@syncfusion/ej2-data";
 import Navigation from "../components/Navigation";
 import HamburgerButton from "../components/HamburgerButton";
 import { useAuth } from "../auth/auth-context";
+import { Container } from "@chakra-ui/react";
 import "../styles/jobs.scss";
 
 const Jobs = () => {
@@ -27,7 +28,7 @@ const Jobs = () => {
 	});
 
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" color="white">
             <HamburgerButton />
             <ScheduleComponent
 				eventSettings={{ dataSource: dataManager }}
@@ -44,7 +45,7 @@ const Jobs = () => {
 				/>
 			</ScheduleComponent>
             {menu && <Navigation />}
-        </div>
+        </Container>
     );
 };
 

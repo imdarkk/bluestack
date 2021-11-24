@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import HamburgerButton from "../components/HamburgerButton";
 import { useAuth } from "../auth/auth-context";
 import "../styles/employees.scss";
+import { Container, Flex } from "@chakra-ui/react";
 
 const Employees = () => {
     const { menu } = useAuth();
@@ -26,17 +27,19 @@ const Employees = () => {
         })();
     }, []);
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white">
             <HamburgerButton />
             {menu && <Navigation />}
-            <div className="employees-wrapper">
-                {employees && (
-                    employees.map((employee) => (
-                        <EmployeeCard id={employee.id} username={employee.username} email={employee.email} name={employee.name} surname={employee.surname} phoneNumber={employee.phoneNumber} role={employee.role} />
-                    ))
-                )}
-            </div>
-        </div>
+            <Flex flexDirection="column" w="100%" align="center">
+                <div className="employees-wrapper">
+                    {employees && (
+                        employees.map((employee) => (
+                            <EmployeeCard id={employee.id} username={employee.username} email={employee.email} name={employee.name} surname={employee.surname} phoneNumber={employee.phoneNumber} role={employee.role} />
+                        ))
+                    )}
+                </div>
+            </Flex>
+        </Container>
     );
 };
 

@@ -4,6 +4,7 @@ import { useAuth } from "../auth/auth-context";
 import HamburgerButton from "../components/HamburgerButton";
 import Navigation from "../components/Navigation";
 import Car from "../components/Car";
+import { Container, Flex } from "@chakra-ui/react";
 import "../styles/carcard.scss";
 
 const ManageCars = () => {
@@ -22,16 +23,18 @@ const ManageCars = () => {
         })();
     }, []);
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white">
             <HamburgerButton />
             {menu && <Navigation />}
             <Link to="/add/car" className="add-tool-btn">Add Car</Link>
-            <div className="car-container">
-                {cars.map((e, index) => (
-                    <Car key={index} license={e.license} fuel={e.fuel} transmission={e.transmission} status={e.status} />
-                ))}
-            </div>
-        </div>
+            <Flex flexDirection="column" w="100%" align="center">
+                <div className="car-container">
+                    {cars.map((e, index) => (
+                        <Car key={index} license={e.license} fuel={e.fuel} transmission={e.transmission} status={e.status} />
+                    ))}
+                </div>
+            </Flex>
+        </Container>
     )
 };
 

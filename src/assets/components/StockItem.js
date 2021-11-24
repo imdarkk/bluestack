@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { Button, ButtonGroup } from "@chakra-ui/react";
 
 const StockItem = (props) => {
     return (
@@ -11,7 +12,7 @@ const StockItem = (props) => {
                 <p className="stock-amount"><b>Sell Price: </b>€{props.sellPrice}</p>
             </div>
             <div className="stock-right-section">
-                <div><Link to={`/edit/${props.id}`}>Edit</Link></div>
+                <Button variant="outline" colorScheme="teal" size="md"><Link to={`/edit/${props.id}`}>Edit</Link></Button>
             </div>
         </div>
     );

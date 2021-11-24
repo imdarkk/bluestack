@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useHistory, useParams } from "react-router-dom";
+import { Container } from "@chakra-ui/react";
 
 const EditTool = () => {
     const history = useHistory();
@@ -38,7 +39,7 @@ const EditTool = () => {
     },[]);
 
     return (
-        <div className="add-stock-screen">
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white" className="add-stock-screen">
             <input type="text" value={name} placeholder="Product Name" className="add-stock-input" />
             <select value={category} className="add-stock-input">
                 {categories.map((e, index) => (
@@ -54,7 +55,7 @@ const EditTool = () => {
 
             <button className="add-stock-btn add-stock-finish">Finish</button>
             <button onClick={() => history.goBack()} className="add-stock-btn add-stock-cancel">Cancel</button>
-        </div>
+        </Container>
     )
 }
 

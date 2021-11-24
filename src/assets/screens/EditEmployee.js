@@ -1,3 +1,4 @@
+import { Container } from '@chakra-ui/react';
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import "../styles/employees.scss";
@@ -71,7 +72,7 @@ const EditEmployee = () => {
 
     return (
         <>
-            <div className="edit-employee-wrapper">
+            <Container bg="#10151A" maxW="100vw" h="100vh" color="white" className="edit-employee-wrapper">
                 <p className="edit-employee-text">Manage employee account</p>
                 <p>ID</p>
                 <input type="text" className="general-input" value={uid} disabled />
@@ -111,7 +112,7 @@ const EditEmployee = () => {
                 }}>Revoke Account</div>
                 <div class="button-edit save" onClick={handleSave}>Save Changes</div>
                 <div class="button-edit cancel" onClick={() => history.goBack()}>Cancel</div>
-            </div>
+            </Container>
         </>
     );
 };

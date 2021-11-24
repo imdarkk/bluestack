@@ -4,6 +4,7 @@ import Navigation from "../components/Navigation";
 import ToolsCard from "../components/ToolsCard";
 import { useAuth } from '../auth/auth-context';
 import { Link } from "react-router-dom";
+import { Container } from "@chakra-ui/react";
 import "../styles/tools.scss";
 
 const Tools = () => {
@@ -37,7 +38,7 @@ const Tools = () => {
     }, []);
 
     return (
-        <div>
+        <Container bg="#10151A" w="100vw" color="white" overflow="hidden">
             <HamburgerButton />
             {menu && <Navigation />}
             <Link to="/add/tools" className="add-tool-btn">Add Tool</Link>
@@ -53,7 +54,7 @@ const Tools = () => {
                     )
                 )}
             </div>
-        </div>
+        </Container>
     );
 };
 

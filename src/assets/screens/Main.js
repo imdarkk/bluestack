@@ -3,6 +3,7 @@ import Navigation from "../components/Navigation";
 import HamburgerButton from "../components/HamburgerButton";
 import { Link, useHistory } from "react-router-dom";
 import { useAuth } from "../auth/auth-context";
+import { Container, Flex, Button } from "@chakra-ui/react";
 import "../styles/main.scss";
 
 const Main = () => {
@@ -10,23 +11,25 @@ const Main = () => {
     const { menu } = useAuth();
     const user = JSON.parse(localStorage.getItem('details'));
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white">
             <HamburgerButton />
-            {menu && <Navigation />}
-            <div className="main-page-content">
-                <div className="checklist-wrapper">
-                    {user.role === 'admin' && (
-                        <p onClick={() => history.push('/manage/cars')} className="manage-cars-btn">Manage cars</p>
-                    )}
+            <Flex align="center" flexDirection="column">
+                {menu && <Navigation />}
+                <div className="main-page-content">
+                    <Flex className="checklist-wrapper" direction="column">
+                        {user.role === 'admin' && (
+                            <Button mb={5} size="md" w="87vw" colorScheme="teal" onClick={() => history.push('/manage/cars')}>Manage Cars</Button>
+                        )}
 
-                    <p className="checklist-text">Checklists</p>
-                    <Link to="/checklist/acInstall" className="checklist-btn">A/C Install Checklist</Link>
-                    <Link to="/checklist/acRepair" className="checklist-btn">A/C Repair Checklist</Link>
-                    <Link to="/checklist/heating" className="checklist-btn">Heating Repair Checklist</Link>
-                    <Link to="/checklist/plumbing" className="checklist-btn">Plumbing Repair Checklist</Link>
+                        <p className="checklist-text">Checklists</p>
+                        <Button mt={4} size="md" w="87vw" colorScheme="teal"><Link to="/checklist/acInstall" className="link">A/C Install Checklist</Link></Button>
+                        <Button mt={2} size="md" w="87vw" colorScheme="teal"><Link to="/checklist/acRepair" className="link">A/C Repair Checklist</Link></Button>
+                        <Button mt={2} size="md" w="87vw" colorScheme="teal"><Link to="/checklist/heating" className="link">Heating Repair Checklist</Link></Button>
+                        <Button mt={2} size="md" w="87vw" colorScheme="teal"><Link to="/checklist/plumbing" className="link">Plumbing Repair Checklist</Link></Button>
+                    </Flex>
                 </div>
-            </div>
-        </div>
+            </Flex>
+        </Container>
     );
 };
 

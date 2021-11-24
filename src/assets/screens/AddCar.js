@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import React, { useState } from "react";
 import { Link, useHistory } from "react-router-dom";
 
@@ -76,7 +77,7 @@ const AddCar = () => {
     }
 
     return (
-        <div className="add-stock-screen">
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white" className="add-stock-screen">
             <p className="add-stock-text">Add Car</p>
             <input value={license} onChange={handleLicense} type="text" placeholder="License Plate" className="add-stock-input" />
             <input value={brand} onChange={handleBrand} type="text" placeholder="Brand" className="add-stock-input" />
@@ -113,7 +114,7 @@ const AddCar = () => {
 
             <button className="add-stock-btn add-stock-finish" onClick={handleAddCar}>Finish</button>
             <button className="add-stock-btn add-stock-cancel"><Link to="/manage/cars">Cancel</Link></button>
-        </div>
+        </Container>
     );
 };
 

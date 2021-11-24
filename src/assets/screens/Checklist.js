@@ -8,11 +8,12 @@ import HeatingCheck from "../components/HeatingCheck";
 import PlumbingCheck from "../components/PlumbingCheck";
 
 import "../styles/checklists.scss";
+import { Container } from "@chakra-ui/react";
 
 const Checklist = () => {
     const { type } = useParams();
     return (
-        <div>
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white">
             {type == "acRepair" && <ACRepairCheck />}
             {type == "acInstall" && <ACInstallCheck />}
             {type == "heating" && <HeatingCheck />}
@@ -20,7 +21,7 @@ const Checklist = () => {
             {(type != "acRepair" && type != "acInstall" && type != "heating" && type != "plumbing") && (
                 <p>{type}</p>
             )}
-        </div>
+        </Container>
     );
 };
 

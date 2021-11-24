@@ -1,3 +1,4 @@
+import { Container } from "@chakra-ui/react";
 import React, {useState} from "react";
 import { Link, useHistory } from "react-router-dom";
 import "../styles/addstock.scss";
@@ -41,7 +42,7 @@ const AddStock = () => {
         })();
     }
     return (
-        <div className="add-stock-screen">
+        <Container bg="#10151A" maxW="100vw" h="100vh" color="white" className="add-stock-screen">
             <p className="add-stock-text">Add Product to Stock list</p>
             <input type="text" value={name} onChange={handleName} placeholder="Product Name" className="add-stock-input" />
             <input type="text" value={instock} onChange={handleStock} placeholder="Amount In Stock" className="add-stock-input" />
@@ -50,7 +51,7 @@ const AddStock = () => {
 
             <button onClick={handleAddProduct} className="add-stock-btn add-stock-finish">Finish</button>
             <button className="add-stock-btn add-stock-cancel"><Link to="/stock">Cancel</Link></button>
-        </div>
+        </Container>
     );
 };
 
