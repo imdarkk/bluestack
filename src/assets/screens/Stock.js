@@ -25,7 +25,7 @@ const Stock = () => {
 
     const { menu } = useAuth();
     return (
-        <Container bg="#10151A" maxW="100vw" color="white">
+        <Container bg="#10151A" maxW="100vw" minH="100vh" color="white">
             {menu && <Navigation />}
             <HamburgerButton />
             <div className="add-stock-button">
