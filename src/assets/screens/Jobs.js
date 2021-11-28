@@ -18,21 +18,19 @@ import { Container } from "@chakra-ui/react";
 import "../styles/jobs.scss";
 
 const Jobs = () => {
-    const { menu } = useAuth();
+	const { menu } = useAuth();
 
 	let dataManager = new DataManager({
-		url: "http://46.101.219.134:3001/getJobs",
-		crudUrl: "http://46.101.219.134:3001/updateJobs",
+		url: "http://back.backend.mariosk.xyz:3001/getJobs",
+		crudUrl: "http://back.backend.mariosk.xyz:3001/updateJobs",
 		crossDomain: true,
 		adaptor: new UrlAdaptor(),
 	});
 
-    return (
-        <Container bg="#10151A" maxW="100vw" color="white">
-            <HamburgerButton />
-            <ScheduleComponent
-				eventSettings={{ dataSource: dataManager }}
-			>
+	return (
+		<Container bg="#10151A" maxW="100vw" color="white">
+			<HamburgerButton />
+			<ScheduleComponent eventSettings={{ dataSource: dataManager }}>
 				<ViewsDirective>
 					<ViewDirective
 						option="Week"
@@ -40,13 +38,11 @@ const Jobs = () => {
 						endHour="22:00"
 					/>
 				</ViewsDirective>
-				<Inject
-					services={[Day, Week, WorkWeek, Month, Agenda]}
-				/>
+				<Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
 			</ScheduleComponent>
-            {menu && <Navigation />}
-        </Container>
-    );
+			{menu && <Navigation />}
+		</Container>
+	);
 };
 
 export default Jobs;

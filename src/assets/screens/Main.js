@@ -8,25 +8,29 @@ import "../styles/main.scss";
 import AppointmentCard from "../components/AppointmentCard";
 
 const Main = () => {
-    const history = useHistory();
-    const { menu } = useAuth();
-    const user = JSON.parse(localStorage.getItem('details'));
-    const [today, setToday] = useState([]);
-    useEffect(() => {
-        (async () => {
-            const app = await fetch("http://46.101.219.134:3001/appointments/today");
-            const response = await app.json();
-            setToday(response.map((item) => ({
-                subject: item.Subject,
-                location: item.Location,
-                startTime: item.StartTime,
-                endTime: item.EndTime,
-                description: item.Description,
-                id: item.Id,
-            })));
-        })();
-    }, []);
-    return (
+	const history = useHistory();
+	const { menu } = useAuth();
+	const user = JSON.parse(localStorage.getItem("details"));
+	const [today, setToday] = useState([]);
+	useEffect(() => {
+		(async () => {
+			const app = await fetch(
+				"http://back.backend.mariosk.xyz:3001/appointments/today"
+			);
+			const response = await app.json();
+			setToday(
+				response.map((item) => ({
+					subject: item.Subject,
+					location: item.Location,
+					startTime: item.StartTime,
+					endTime: item.EndTime,
+					description: item.Description,
+					id: item.Id,
+				}))
+			);
+		})();
+	}, []);
+	return (
 		<Container bg="#10151A" maxW="100vw" minH="100vh" color="white">
 			<HamburgerButton />
 			<Flex align="center" flexDirection="column">
@@ -69,10 +73,14 @@ const Main = () => {
 							</Link>
 						</Button>
 
-                        <Text fontWeight="bold" fontSize="22px" mt={5} mb={5}>
+						<Text fontWeight="bold" fontSize="22px" mt={5} mb={5}>
 							Appointments today
 						</Text>
-						<Flex justifyContent="center" alignItems="center" flexDirection="column">
+						<Flex
+							justifyContent="center"
+							alignItems="center"
+							flexDirection="column"
+						>
 							{today.map((e) => (
 								<AppointmentCard
 									subject={e.subject}

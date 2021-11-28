@@ -8,36 +8,47 @@ import { Container } from "@chakra-ui/react";
 import "../styles/stock.scss";
 
 const Stock = () => {
-    const [products, setProducts] = useState([]);
-    useEffect(() => {
-        (async() => {
-            const products = await fetch('http://46.101.219.134:3001/getProducts');
-            const response = await products.json();
-           setProducts(response.map((e) => ({
-            id: e.id,
-            product_name: e.product_name,
-            inStock: e.in_stock,
-            buyPrice: e.buyingPrice,
-            sellPrice: e.sellPrice,
-           })));
-        })();
-    }, []);
+	const [products, setProducts] = useState([]);
+	useEffect(() => {
+		(async () => {
+			const products = await fetch(
+				"http://back.backend.mariosk.xyz:3001/getProducts"
+			);
+			const response = await products.json();
+			setProducts(
+				response.map((e) => ({
+					id: e.id,
+					product_name: e.product_name,
+					inStock: e.in_stock,
+					buyPrice: e.buyingPrice,
+					sellPrice: e.sellPrice,
+				}))
+			);
+		})();
+	}, []);
 
-    const { menu } = useAuth();
-    return (
-        <Container bg="#10151A" maxW="100vw" minH="100vh" color="white">
-            {menu && <Navigation />}
-            <HamburgerButton />
-            <div className="add-stock-button">
-               <Link to="/add/stock">Add Item</Link>
-            </div>
-            <div className="stock-cards-wrapper">
-                {products.map((e) => (
-                    <StockItem key={e.id} id={e.id} buyPrice={e.buyPrice} sellPrice={e.sellPrice} product_name={e.product_name} stock={e.inStock} />
-                ))}
-            </div>
-        </Container>
-    );
+	const { menu } = useAuth();
+	return (
+		<Container bg="#10151A" maxW="100vw" minH="100vh" color="white">
+			{menu && <Navigation />}
+			<HamburgerButton />
+			<div className="add-stock-button">
+				<Link to="/add/stock">Add Item</Link>
+			</div>
+			<div className="stock-cards-wrapper">
+				{products.map((e) => (
+					<StockItem
+						key={e.id}
+						id={e.id}
+						buyPrice={e.buyPrice}
+						sellPrice={e.sellPrice}
+						product_name={e.product_name}
+						stock={e.inStock}
+					/>
+				))}
+			</div>
+		</Container>
+	);
 };
 
 export default Stock;
