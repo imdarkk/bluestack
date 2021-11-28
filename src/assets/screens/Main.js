@@ -27,7 +27,7 @@ const Main = () => {
         })();
     }, []);
     return (
-		<Container bg="#10151A" maxW="100vw" h="100vh" color="white">
+		<Container bg="#10151A" maxW="100vw" minH="100vh" color="white">
 			<HamburgerButton />
 			<Flex align="center" flexDirection="column">
 				{menu && <Navigation />}

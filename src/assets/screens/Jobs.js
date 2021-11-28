@@ -24,7 +24,7 @@ const Jobs = () => {
 		url: "http://46.101.219.134:3001/getJobs",
 		crudUrl: "http://46.101.219.134:3001/updateJobs",
 		crossDomain: true,
-		adaptor: new UrlAdaptor()
+		adaptor: new UrlAdaptor(),
 	});
 
     return (
