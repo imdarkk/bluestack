@@ -16,7 +16,7 @@ const EditEmployee = () => {
 	useEffect(() => {
 		(async () => {
 			const getEmployee = await fetch(
-				`http://back.backend.mariosk.xyz:3001/getEmployee/${id}`
+				`https://backend.mariosk.xyz:3001/getEmployee/${id}`
 			);
 			const response = await getEmployee.json();
 			response.map((e) => {
@@ -53,7 +53,7 @@ const EditEmployee = () => {
 	const handleSave = () => {
 		(async () => {
 			const save = await fetch(
-				"http://back.backend.mariosk.xyz:3001/save/employee",
+				"https://backend.mariosk.xyz:3001/save/employee",
 				{
 					method: "POST",
 					headers: {
@@ -147,7 +147,7 @@ const EditEmployee = () => {
 					onClick={() => {
 						(async () => {
 							const revoke = await fetch(
-								"http://back.backend.mariosk.xyz:3001/revoke/employee",
+								"https://backend.mariosk.xyz:3001/revoke/employee",
 								{
 									method: "POST",
 									headers: {

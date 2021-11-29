@@ -13,7 +13,7 @@ const Employees = () => {
 	useEffect(() => {
 		(async () => {
 			const employees = await fetch(
-				`http://back.backend.mariosk.xyz:3001/getEmployees/${details.username}`
+				`https://backend.mariosk.xyz:3001/getEmployees/${details.username}`
 			);
 			const response = await employees.json();
 

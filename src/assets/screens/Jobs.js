@@ -21,8 +21,8 @@ const Jobs = () => {
 	const { menu } = useAuth();
 
 	let dataManager = new DataManager({
-		url: "http://back.backend.mariosk.xyz:3001/getJobs",
-		crudUrl: "http://back.backend.mariosk.xyz:3001/updateJobs",
+		url: "https://backend.mariosk.xyz:3001/getJobs",
+		crudUrl: "https://backend.mariosk.xyz:3001/updateJobs",
 		crossDomain: true,
 		adaptor: new UrlAdaptor(),
 	});

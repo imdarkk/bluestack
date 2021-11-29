@@ -23,7 +23,7 @@ const EditProduct = () => {
 	useEffect(() => {
 		(async () => {
 			const product = await fetch(
-				`http://back.backend.mariosk.xyz:3001/getProduct/${id}`
+				`https://backend.mariosk.xyz:3001/getProduct/${id}`
 			);
 			const response = await product.json();
 			setName(response[0].product_name);
@@ -50,7 +50,7 @@ const EditProduct = () => {
 	const handleDelete = () => {
 		(async () => {
 			const deleteProduct = await fetch(
-				`http://back.backend.mariosk.xyz:3001/delete/product`,
+				`https://backend.mariosk.xyz:3001/delete/product`,
 				{
 					method: "POST",
 					headers: {
@@ -73,7 +73,7 @@ const EditProduct = () => {
 	const handleEdit = () => {
 		(async () => {
 			const edit = await fetch(
-				`http://back.backend.mariosk.xyz:3001/edit/${pid}`,
+				`https://backend.mariosk.xyz:3001/edit/${pid}`,
 				{
 					method: "POST",
 					headers: {

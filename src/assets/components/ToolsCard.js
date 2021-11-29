@@ -10,7 +10,7 @@ const ToolsCard = (props) => {
 	const handleToolDelete = () => {
 		(async () => {
 			const deleteTool = await fetch(
-				`http://back.backend.mariosk.xyz:3001/delete/tool`,
+				`https://backend.mariosk.xyz:3001/delete/tool`,
 				{
 					method: "POST",
 					headers: {

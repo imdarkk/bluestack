@@ -15,7 +15,7 @@ const Main = () => {
 	useEffect(() => {
 		(async () => {
 			const app = await fetch(
-				"http://back.backend.mariosk.xyz:3001/appointments/today"
+				"https://backend.mariosk.xyz:3001/appointments/today"
 			);
 			const response = await app.json();
 			setToday(

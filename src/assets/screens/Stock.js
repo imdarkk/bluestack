@@ -12,7 +12,7 @@ const Stock = () => {
 	useEffect(() => {
 		(async () => {
 			const products = await fetch(
-				"http://back.backend.mariosk.xyz:3001/getProducts"
+				"https://backend.mariosk.xyz:3001/getProducts"
 			);
 			const response = await products.json();
 			setProducts(

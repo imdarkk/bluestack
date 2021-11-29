@@ -5,7 +5,7 @@ const Cars = (props) => {
 	const handleDelete = () => {
 		(async () => {
 			const rawResponse = await fetch(
-				`http://back.backend.mariosk.xyz:3001/delete/car/${props.license}`
+				`https://backend.mariosk.xyz:3001/delete/car/${props.license}`
 			);
 			const content = await rawResponse.json();
 			if (content.status == 200) {

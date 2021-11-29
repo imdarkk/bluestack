@@ -15,7 +15,7 @@ const AddTool = () => {
 	useEffect(() => {
 		(async () => {
 			const getInfo = await fetch(
-				"http://back.backend.mariosk.xyz:3001/addTool/info"
+				"https://backend.mariosk.xyz:3001/addTool/info"
 			);
 			const response = await getInfo.json();
 			setFetchedCars(
@@ -47,7 +47,7 @@ const AddTool = () => {
 	const handleAddToolRequest = () => {
 		(async () => {
 			const addTool = await fetch(
-				"http://back.backend.mariosk.xyz:3001/addTool/complete",
+				"https://backend.mariosk.xyz:3001/addTool/complete",
 				{
 					method: "POST",
 					headers: {

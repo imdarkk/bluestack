@@ -26,7 +26,7 @@ const AddStock = () => {
 	const handleAddProduct = () => {
 		(async () => {
 			const product = await fetch(
-				"http://back.backend.mariosk.xyz:3001/addProduct",
+				"https://backend.mariosk.xyz:3001/addProduct",
 				{
 					method: "POST",
 					headers: {

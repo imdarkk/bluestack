@@ -15,9 +15,7 @@ const Tools = () => {
 
 	useEffect(() => {
 		(async () => {
-			const car = await fetch(
-				"http://back.backend.mariosk.xyz:3001/getCars"
-			);
+			const car = await fetch("https://backend.mariosk.xyz:3001/getCars");
 			const responseCars = await car.json();
 			setCars(
 				responseCars.map((e) => ({
@@ -26,7 +24,7 @@ const Tools = () => {
 			);
 
 			const tools = await fetch(
-				"http://back.backend.mariosk.xyz:3001/getTools"
+				"https://backend.mariosk.xyz:3001/getTools"
 			);
 			const responseTools = await tools.json();
 			setTools(
@@ -40,7 +38,7 @@ const Tools = () => {
 			);
 
 			const getOneCar = await fetch(
-				"http://back.backend.mariosk.xyz:3001/getOneCar"
+				"https://backend.mariosk.xyz:3001/getOneCar"
 			);
 			const responseOneCar = await getOneCar.json();
 			setShowTools(responseOneCar[0].license_plate);

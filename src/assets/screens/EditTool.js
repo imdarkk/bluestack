@@ -18,7 +18,7 @@ const EditTool = () => {
 	useEffect(() => {
 		(async () => {
 			const getInfo = await fetch(
-				"http://back.backend.mariosk.xyz:3001/addTool/info"
+				"https://backend.mariosk.xyz:3001/addTool/info"
 			);
 			const response = await getInfo.json();
 			setFetchedCars(
@@ -33,7 +33,7 @@ const EditTool = () => {
 			);
 
 			const getTool = await fetch(
-				`http://back.backend.mariosk.xyz:3001/get/tool/${id}`
+				`https://backend.mariosk.xyz:3001/get/tool/${id}`
 			);
 			const responseTool = await getTool.json();
 			responseTool.map((e) => {

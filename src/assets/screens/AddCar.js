@@ -50,7 +50,7 @@ const AddCar = () => {
 	const handleAddCar = () => {
 		(async () => {
 			const rawResponse = await fetch(
-				"http://back.backend.mariosk.xyz:3001/add/car",
+				"https://backend.mariosk.xyz:3001/add/car",
 				{
 					method: "POST",
 					headers: {

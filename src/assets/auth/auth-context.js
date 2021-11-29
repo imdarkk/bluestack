@@ -15,7 +15,7 @@ const AuthProvider = (props) => {
 
 			(async () => {
 				const check = await fetch(
-					`http://back.backend.mariosk.xyz:3001/checkUser/${token}`
+					`https://backend.mariosk.xyz:3001/checkUser/${token}`
 				);
 				const response = await check.json();
 
@@ -48,7 +48,7 @@ const AuthProvider = (props) => {
 		(async () => {
 			if (username && password) {
 				const login = await fetch(
-					"http://back.backend.mariosk.xyz:3001/signin",
+					"https://backend.mariosk.xyz:3001/signin",
 					{
 						method: "POST",
 						headers: {

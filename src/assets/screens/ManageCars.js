@@ -13,7 +13,7 @@ const ManageCars = () => {
 	useEffect(() => {
 		(async () => {
 			const getCars = await fetch(
-				"http://back.backend.mariosk.xyz:3001/getCars"
+				"https://backend.mariosk.xyz:3001/getCars"
 			);
 			const response = await getCars.json();
 			setCars(
