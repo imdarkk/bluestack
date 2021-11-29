@@ -22,7 +22,7 @@ const Stock = () => {
 					inStock: e.in_stock,
 					buyPrice: e.buyingPrice,
 					sellPrice: e.sellPrice,
-				}));
+				}))
 			);
 		})();
 	}, []);
