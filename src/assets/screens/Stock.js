@@ -11,10 +11,10 @@ const Stock = () => {
 	const [products, setProducts] = useState([]);
 	useEffect(() => {
 		(async () => {
-			const products = await fetch(
+			const res = await fetch(
 				"https://backend.mariosk.xyz:3001/getProducts"
 			);
-			const response = await products.json();
+			const response = await res.json();
 			setProducts(
 				response.map((e) => ({
 					id: e.id,
@@ -22,7 +22,7 @@ const Stock = () => {
 					inStock: e.in_stock,
 					buyPrice: e.buyingPrice,
 					sellPrice: e.sellPrice,
-				}))
+				}));
 			);
 		})();
 	}, []);
