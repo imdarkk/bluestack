@@ -46,7 +46,7 @@ const Tools = () => {
 	}, []);
 
 	return (
-		<Container bg="#10151A" w="100vw" color="white" overflow="hidden">
+		<Container bg="#10151A" w="100vw" minH="100vh" color="white" overflow="hidden">
 			<HamburgerButton />
 			{menu && <Navigation />}
 			<Link to="/add/tools" className="add-tool-btn">
