@@ -14,6 +14,8 @@ import EditEmployee from "./screens/EditEmployee";
 import EditTool from "./screens/EditTool";
 import ManageCars from "./screens/ManageCars";
 import AddCar from "./screens/AddCar";
+import Invoices from "./screens/Invoices";
+import CreateInvoice from "./screens/CreateInvoice";
 
 const UnprotectedRoutes = () => {
     return (
@@ -34,12 +36,14 @@ const ProtectedRoutes = () => {
             <Route exact path="/add/stock" component={AddStock} />
             <Route exact path="/add/car" component={AddCar} />
             <Route exact path="/tools" component={Tools} />
+            <Route exact path="/invoices" component={Invoices} />
             <Route path="/edit/:id" component={EditProduct} />
             <Route path="/tool/edit/:id" component={EditTool} />
             <Route path="/manage/employee/:id" component={EditEmployee} />
             <Route exact path="/manage/cars" component={ManageCars} />
             <Route path="/checklist/:type" component={Checklist} />
             <Route exact path="/add/tools" component={AddTool} />
+            <Route exact path="/create/invoice" component={CreateInvoice} />
             {details.role === "admin" && (
                 <>
                     <Route exact path="/employees" component={Employees} />

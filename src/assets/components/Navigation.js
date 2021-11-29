@@ -14,6 +14,7 @@ const Navigation = () => {
             <Link onClick={handleMenu} to="/stock" className="navigation-text">Stock</Link>
             <Link onClick={handleMenu} to="/tools" className="navigation-text">Tools</Link>
             <Link onClick={handleMenu} to="/jobs" className="navigation-text">Calendar</Link>
+            <Link onClick={handleMenu} to="/invoices" className="navigation-text">Invoices</Link>
             {details.role === "admin" && (
                 <>
                     <Link onClick={handleMenu} to="/employees" className="navigation-text">Employees</Link>
