@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@100;200;300;400;500;600;700;800;900&display=swap');
+
+.wrapper-createInvoice {
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    background: #10151A;
+}
+
+.wrapper-createBox {
+    height: 90%;
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    background: #EAE7EA;
+    border-radius: 0 30px 0 0;
+    font-family: 'Outfit', sans-serif;
+
+    &::before {
+        content: "";
+        position: absolute;
+        height: 40px;
+        width: 50%;
+        background: #EAE7EA;
+        top: -38px;
+        border-top-left-radius: 30px;
+        border-top-right-radius: 5px;
+    }
+
+    &::after {
+        content: "";
+        position: absolute;
+        height: 40px;
+        width: 25px;
+        background: #EAE7EA;
+        top: -38px;
+        left: 47%;
+        transform: skewX(30deg);
+        border-top-left-radius: 5px;
+        border-top-right-radius: 5px;
+    }
+}
+
+.add-invoice-item-btn {
+    width: 130px;
+    height: 40px;
+    border-radius: 6px;
+    background: teal;
+    color: white;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+}
