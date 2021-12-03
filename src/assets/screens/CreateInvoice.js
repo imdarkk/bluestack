@@ -8,10 +8,9 @@ const Invoices = () => {
 	const monthNames = ["January", "February", "March", "April", "May", "June",
   		"July", "August", "September", "October", "November", "December"
 	];
-	const [invoiceItems, setInvoiceItems] = useState(4);
 	const [name, setName] = useState("");
 	const [email, setEmail] = useState("");
-	const [items, setItems] = useState({item1: [], item2: [], item3: [], item4: [], item5: [], item6: [], item7: [], item8: [], item9: []});
+	const [items, setItems] = useState({item0: [], item1: [], item2: [], item3: [], item4: [], item5: [], item6: [], item7: [], item8: [], item9: []});
 	const [total, setTotal] = useState(0.00);
 
 	const handleName = (e) => {
@@ -31,20 +30,17 @@ const Invoices = () => {
 		elementPrice.value = "";
 		setItems({...items, [item]: []});
 	}
-	// Add all prices together
-	const addTotal = () => {
-		let total = 0;
-		for (let i = 1; i <= 9; i++) {
-			const elementPrice = document.querySelector('input[data-key-price="item'+i+'"]');
-			alert(elementPrice)
-		}
-		setTotal(total);
-	}
 
 	useEffect(() => {
-		addTotal();
+		let totals = 0.00;
+		Object.values(items).map((item, index) => {
+			if (!isNaN(parseFloat(item.price))) {
+				totals += parseFloat(item.price);
+			}
+		});
+		setTotal(totals)
 	}, [items]);
-	
+
 	return (
 		<div className="wrapper-createInvoice">
 			<Link to="/invoices"><CloseIcon position="absolute" top="15px" right="15px" color="white" w={12} h={12} /></Link>
@@ -53,11 +49,11 @@ const Invoices = () => {
 					<Flex>
 						<Stack>
 							<Text color="#888796" fontSize={18}>Invoice for</Text>
-							<Input placeholder="Client Name" borderBottomWidth={1} borderBottomColor="black" w="80%" paddingLeft="0" top="-12px" />
+							<Input placeholder="Client Name" value={name} onChange={handleName} borderBottomWidth={1} borderBottomColor="black" w="80%" paddingLeft="0" top="-12px" />
 						</Stack>
 						<Stack>
 							<Text color="#888796" fontSize={18}>Total Amount</Text>
-							<Text color="#888796" fontWeight="bold">$ {total}</Text>
+							<Text color="#888796" fontWeight="bold">$ {total.toFixed(2)}</Text>
 						</Stack>
 					</Flex>
 
@@ -65,7 +61,7 @@ const Invoices = () => {
 					<Flex>
 						<Stack>
 							<Text color="#888796">Client's email</Text>
-							<Input type="email" placeholder="Email" borderBottomWidth={1} borderBottomColor="black" w="170px" paddingLeft="0" top="-12px"/>
+							<Input type="email" placeholder="Email" value={email} onChange={handleEmail} borderBottomWidth={1} borderBottomColor="black" w="170px" paddingLeft="0" top="-12px"/>
 						</Stack>
 						<Box />
 						<Stack ml={10}>
@@ -109,7 +105,6 @@ const Invoices = () => {
 						</Flex>
 						))}
 					</Flex>
-					<button onClick={() => console.log(items)}>items</button>
 					<Box position="absolute" bottom="0" right="0" h={50} w="100%" bg="teal">
 						<Flex justifyContent="center" alignItems="center" w="100%" h="100%">
 							<Text color="white" fontWeight="bold">Send Invoice</Text>
