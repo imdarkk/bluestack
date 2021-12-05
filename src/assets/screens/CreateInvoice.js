@@ -9,15 +9,15 @@ const Invoices = () => {
   		"July", "August", "September", "October", "November", "December"
 	];
 	const [name, setName] = useState("");
-	const [email, setEmail] = useState("");
+	const [phone, setPhone] = useState("");
 	const [items, setItems] = useState({item0: [], item1: [], item2: [], item3: [], item4: [], item5: [], item6: [], item7: [], item8: [], item9: []});
 	const [total, setTotal] = useState(0.00);
 
 	const handleName = (e) => {
 		setName(e.target.value);
 	}
-	const handleEmail = (e) => {
-		setEmail(e.target.value);
+	const handlePhone = (e) => {
+		setPhone(e.target.value);
 	}
 	const handleItem = (type, e) => {
 		const item = e.target.name;
@@ -41,7 +41,7 @@ const Invoices = () => {
 			},
 			body: JSON.stringify({
 				name: name,
-				email: email,
+				phone: phone,
 				items: JSON.stringify(items),
 				total: total
 			})
@@ -83,8 +83,8 @@ const Invoices = () => {
 					<Text color="#888796" fontSize={20} mt={8}>Invoice Details</Text>
 					<Flex>
 						<Stack>
-							<Text color="#888796">Client's email</Text>
-							<Input type="email" placeholder="Email" value={email} onChange={handleEmail} borderBottomWidth={1} borderBottomColor="black" w="170px" paddingLeft="0" top="-12px"/>
+							<Text color="#888796">Client's Phone Number</Text>
+							<Input type="number" placeholder="Phone" value={phone} onChange={handlePhone} borderBottomWidth={1} borderBottomColor="black" w="170px" paddingLeft="0" top="-12px"/>
 						</Stack>
 						<Box />
 						<Stack ml={10}>

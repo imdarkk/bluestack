@@ -28,14 +28,14 @@ const InvoiceCard = (props) => {
 		total
 		status
 		name
-		email
+		phone
 		items
 	*/
 	return (
 		<Container bg="#212b36" w="93vw" h="140px" color="white" borderRadius={6} mt={3} onClick={() => history.push(`/invoice/${props.id}`)}>
 			<Flex justify="center" direction="column" h="100%">
 				<Text>{props.name}</Text>
-				<Text>{props.email}</Text>
+				<Text>{props.phone}</Text>
 				<Text>
 					{new Date(props.date).getUTCDate() +
 						" " +

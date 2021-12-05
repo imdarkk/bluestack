@@ -25,7 +25,7 @@ const Invoices = () => {
 				total: e.total,
 				status: e.status,
 				name: e.name,
-				email: e.email,
+				phone: e.phone,
 				items: JSON.parse(e.items)
 			})));
 		})();
@@ -42,7 +42,7 @@ const Invoices = () => {
 			</Button>
 			<Flex pt="82px" justifyContent="center" alignItems="center" w="100%" direction="column">
 				{invoices.map((e) => (
-					<InvoiceCard key={e.id} id={e.id} date={e.date} total={e.total} status={e.status} name={e.name} email={e.email} items={e.items} />
+					<InvoiceCard key={e.id} id={e.id} date={e.date} total={e.total} status={e.status} name={e.name} phone={e.phone} items={e.items} />
 				))}
 			</Flex>
 		</Container>
