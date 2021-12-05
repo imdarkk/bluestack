@@ -1,8 +1,13 @@
 import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import { Container, Text, Flex } from "@chakra-ui/react";
+import { useHistory } from "react-router-dom";
+import { Container, Text, Flex, Box } from "@chakra-ui/react";
 
 const InvoiceCard = (props) => {
+	const history = useHistory();
+	const [showDropdown, setShowDropdown] = useState(false);
+	const handleDropdown = () => {
+		setShowDropdown(!showDropdown);
+	}
 	const monthNames = [
 		"January",
 		"February",
@@ -27,7 +32,7 @@ const InvoiceCard = (props) => {
 		items
 	*/
 	return (
-		<Container bg="#212b36" w="93vw" h="140px" color="white" br={12} mt={3}>
+		<Container bg="#212b36" w="93vw" h="140px" color="white" borderRadius={6} mt={3} onClick={() => history.push(`/invoice/${props.id}`)}>
 			<Flex justify="center" direction="column" h="100%">
 				<Text>{props.name}</Text>
 				<Text>{props.email}</Text>
@@ -41,7 +46,7 @@ const InvoiceCard = (props) => {
 				<Text color="#888796" fontWeight="bold">
 					€ {props.total.toFixed(2)}
 				</Text>
-				<Text position="absolute" right="10" mb="-60px">
+				<Text position="absolute" right="10" mb="-80px" color={props.status == 0 ? "red" : "green"}>
 					{props.status === "1" ? "Paid" : "Unpaid"}
 				</Text>
 			</Flex>
