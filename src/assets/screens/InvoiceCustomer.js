@@ -3,10 +3,11 @@ import { useParams } from "react-router-dom";
 
 const InvoiceCustomer = () => {
     const { invoice_id } = useParams();
+    console.log(invoice_id)
     const [invoice, setInvoice] = useState([]);
     useEffect(() => {
         (async() => {
-            const getInvoice = await fetch('https://backend.mariosk.xyz/get/customer/invoice/' + invoice_id);
+            const getInvoice = await fetch('https://backend.mariosk.xyz:3001/get/customer/invoice/' + invoice_id);
             const response = await getInvoice.json();
             setInvoice(response.map((e) => ({
                 id: e.invoice_id,
