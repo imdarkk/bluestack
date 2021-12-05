@@ -31,6 +31,29 @@ const Invoices = () => {
 		setItems({...items, [item]: []});
 	}
 
+	const createInvoice = async () => {
+		const addInvoice = await fetch('https://backend.mariosk.xyz:3001/create/invoice', {
+			method: 'POST',
+			headers: {
+				'Content-Type': 'application/json',
+				Accept: 'application/json',
+				'auth-token': localStorage.getItem('token')
+			},
+			body: JSON.stringify({
+				name: name,
+				email: email,
+				items: JSON.stringify(items),
+				total: total
+			})
+		});
+		const response = await addInvoice.json();
+		if (response.status === 200) {
+			alert("Invoice created successfully");
+		} else {
+			alert("Something went wrong");
+		}
+	}
+
 	useEffect(() => {
 		let totals = 0.00;
 		Object.values(items).map((item, index) => {
@@ -53,7 +76,7 @@ const Invoices = () => {
 						</Stack>
 						<Stack>
 							<Text color="#888796" fontSize={18}>Total Amount</Text>
-							<Text color="#888796" fontWeight="bold">$ {total.toFixed(2)}</Text>
+							<Text color="#888796" fontWeight="bold">€ {total.toFixed(2)}</Text>
 						</Stack>
 					</Flex>
 
@@ -106,7 +129,7 @@ const Invoices = () => {
 						))}
 					</Flex>
 					<Box position="absolute" bottom="0" right="0" h={50} w="100%" bg="teal">
-						<Flex justifyContent="center" alignItems="center" w="100%" h="100%">
+						<Flex justifyContent="center" alignItems="center" w="100%" h="100%" onClick={createInvoice}>
 							<Text color="white" fontWeight="bold">Send Invoice</Text>
 						</Flex>
 					</Box>
