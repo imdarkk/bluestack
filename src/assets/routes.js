@@ -17,11 +17,13 @@ import AddCar from "./screens/AddCar";
 import Invoices from "./screens/Invoices";
 import CreateInvoice from "./screens/CreateInvoice";
 import EditInvoice from "./screens/EditInvoice";
+import InvoiceCustomer from "./screens/InvoiceCustomer";
 
 const UnprotectedRoutes = () => {
     return (
         <Switch>
             <Route exact path="/" component={Login} />
+            <Route path="/invoice/:invoice_id" component={InvoiceCustomer} />
             <Route path="*" component={NotFound} />
         </Switch>
     );

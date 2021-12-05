@@ -35,7 +35,7 @@ const EditInvoice = () => {
 		setItems({...items, [item]: []});
 	}
 
-	const createInvoice = async () => {
+	const updateInvoiceFunc = async () => {
 		const updateInvoice = await fetch('https://backend.mariosk.xyz:3001/update/invoice', {
 			method: 'POST',
 			headers: {
@@ -163,7 +163,7 @@ const EditInvoice = () => {
 						))}
 					</Flex>
 					<Box position="absolute" bottom="0" right="0" h={50} w="100%" bg="teal">
-						<Flex justifyContent="center" alignItems="center" w="100%" h="100%" onClick={createInvoice}>
+						<Flex justifyContent="center" alignItems="center" w="100%" h="100%" onClick={updateInvoiceFunc}>
 							<Text color="white" fontWeight="bold">Save & Resend Invoice</Text>
 						</Flex>
 					</Box>
