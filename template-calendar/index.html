@@ -1,0 +1,8 @@
+<div>
+    <input id="CustomerName" name="CustomerName" class="e-field e-input" type="text" placeholder="Customer Name" />
+    <input id="Address" name="Address" class="e-field e-input" type="text" placeholder="Address" />
+    <input id="Phone" name="Phone" class="e-field e-input" type="text" placeholder="Phone #" />
+    <DateTimePickerComponent id="Time" format='dd/MM/yy hh:mm a' data-name="Time" value={new Date()} className="e-field"></DateTimePickerComponent>
+    <DropDownListComponent id="Status" placeholder='Choose status' data-name='Status' className="e-field" style={{ width: '100%' }}
+        dataSource={['Active', 'Pending', 'Closed']}></DropDownListComponent>
+</div>
