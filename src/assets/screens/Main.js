@@ -20,11 +20,12 @@ const Main = () => {
 			const response = await app.json();
 			setToday(
 				response.map((item) => ({
-					subject: item.Subject,
-					location: item.Location,
-					startTime: item.StartTime,
-					endTime: item.EndTime,
+					name: item.CustomerName,
+					address: item.Address,
+					phone: item.Phone,
+					time: item.Time,
 					description: item.Description,
+					status: item.Status,
 					id: item.Id,
 				}))
 			);
@@ -83,12 +84,13 @@ const Main = () => {
 						>
 							{today.map((e) => (
 								<AppointmentCard
-									subject={e.subject}
-									location={e.location}
-									startTime={e.startTime}
-									endTime={e.endTime}
+									name={e.name}
+									address={e.address}
+									phone={e.phone}
+									time={e.time}
 									description={e.description}
 									id={e.id}
+									status={e.status}
 									key={e.id}
 								/>
 							))}
