@@ -4,3 +4,25 @@
     width: 100vw !important;
     margin-left: -15px;
 }
+
+.e-date-time {
+    margin-top: 60px;
+}
+
+.content-text, .e-date-time-details, .e-description-details {
+    font-size: 16px !important;
+    font-family: 'Poppins', sans-serif;
+}
+
+.e-description-details {
+    margin-bottom: 10px;
+}
+
+.content-text {
+    margin-left: 30px;
+    margin-top: 5px;
+}
+
+.e-description-textarea {
+    height: 160px !important;
+}

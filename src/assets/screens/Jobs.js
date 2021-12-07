@@ -36,20 +36,31 @@ const Jobs = () => {
 				<input id="CustomerName" name="CustomerName" class="e-field e-input" type="text" placeholder="Customer Name" />
 				<input id="Address" name="Address" class="e-field e-input" type="text" placeholder="Address" mt={4} />
 				<input id="Phone" name="Phone" class="e-field e-input" type="text" placeholder="Phone #" mt={4} mb={4} />
-				<DateTimePickerComponent id="Time" format='dd/MM/yy hh:mm a' data-name="Time" value={new Date()} className="e-field"></DateTimePickerComponent>
+				<DateTimePickerComponent id="StartTime" format='dd/MM/yy hh:mm a' data-name="StartTime" value={new Date()} className="e-field"></DateTimePickerComponent>
+				<DateTimePickerComponent id="EndTime" format='dd/MM/yy hh:mm a' data-name="EndTime" value={new Date()} className="e-field"></DateTimePickerComponent>
 				<DropDownListComponent id="Status" placeholder='Choose status' data-name='Status' className="e-field" style={{ width: '100%' }}
 					dataSource={['Active', 'Pending', 'Closed']}></DropDownListComponent>
-				<input id="Description" name="Description" class="e-field e-input" type="text" placeholder="Description" mt={4} mb={4} />
+				<textarea id="Description" name="Description" class="e-field e-input e-description-textarea" type="text" placeholder="Description" mt={4} mb={4} />
 			</Container>
 		)
 	}
+	const eventTemplateF = (props) => {
+		return (
+			<div className="template-wrap">
+      		<div className="subject">{props.CustomerName}</div>
+      		<div className="subject">{props.Phone}</div>
+      		<span className="from-event-template">{props.StartTime.getHours() + ":" + props.StartTime.getMinutes()}</span>
+      		<div className="footer"></div></div>
+    	);
+	}
+
 	const eventRenderedFunc = (e) => {
 		switch(e.data.Status) {
 			case 'Active':
-				e.element.style.backgroundColor = '#F57F17';
+				e.element.style.backgroundColor = "#37B36D";
 				break;
 			case 'Pending':
-				e.element.style.backgroundColor = '#FFEB3B';
+				e.element.style.backgroundColor = '#F57F17';
 				break;
 			case 'Closed':
 				e.element.style.backgroundColor = '#cf4040';
@@ -58,22 +69,40 @@ const Jobs = () => {
 				break;
 		}
 	}
-	const onActionBegin = (args) => {
-        if (args.requestType === 'eventCreate' || args.requestType === 'eventChange') {
-            let data = args.data instanceof Array ? args.data[0] : args.data;
-            args.cancel = !this.scheduleObj.isSlotAvailable(data.StartTime, data.EndTime);
-        }
-    }
+	const popupOpen = (args) => {
+		if (args.type === 'ViewEventInfo') {
+			// Remove element with class e-subject-wrap
+			let subjectWrap = document.getElementsByClassName('e-subject-wrap');
+			subjectWrap[0].remove();
+
+			let content = args.element.querySelector(".e-popup-content");
+			let div = document.createElement("div");
+			div.classList.add("content-wrapper");
+			// CustomerName Address Phone Status Description
+			Object.keys(args.data).forEach((key) => {
+				// args.data[key]
+				if (key == "CustomerName" || key == "Address" || key == "Phone" || key == "Status") {
+					let p = document.createElement("p");
+					p.classList.add("content-text");
+					p.innerHTML = args.data[key];
+					div.appendChild(p);
+				}
+			});
+			content.appendChild(div);
+		}
+	}
 
 	return (
 		<Container bg="#10151A" maxW="100vw" color="white">
 			<HamburgerButton />
-			<ScheduleComponent eventSettings={{ dataSource: dataManager }} editorTemplate={templateCalendar} eventRendered={eventRenderedFunc}>
+			<ScheduleComponent eventSettings={{ dataSource: dataManager }} popupOpen={popupOpen} editorTemplate={templateCalendar} eventRendered={eventRenderedFunc}>
 				<ViewsDirective>
 					<ViewDirective
-						option="Week"
+						option="WorkWeek"
+						workDays={[1,2,3,4,5,6]}
 						startHour="09:00"
 						endHour="22:00"
+						eventTemplate={eventTemplateF}
 					/>
 				</ViewsDirective>
 				<Inject services={[Day, Week, WorkWeek, Month, Agenda]} />
