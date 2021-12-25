@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { Stack, Input, Box, Text, Flex, Container, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Stack, Input, Box, Text, Flex, Container, InputGroup, InputLeftElement, Select } from "@chakra-ui/react";
 import { TrashIcon, CloseIcon, LogoEuroIcon } from 'chakra-ui-ionicons';
 import "../styles/createInvoice.scss";
 
@@ -12,6 +12,7 @@ const Invoices = () => {
 	const [phone, setPhone] = useState("");
 	const [items, setItems] = useState({item0: [], item1: [], item2: [], item3: [], item4: [], item5: [], item6: [], item7: [], item8: [], item9: []});
 	const [total, setTotal] = useState(0.00);
+	const [status, setStatus] = useState();
 
 	const handleName = (e) => {
 		setName(e.target.value);
@@ -23,6 +24,9 @@ const Invoices = () => {
 		const item = e.target.name;
 		setItems({...items, [item]: {...items[item], [type]: e.target.value}});
 	}
+	const handleStatus = (e) => {
+		setStatus(e.target.value);
+	};
 	const removeElement = (item) => {
 		const elementName = document.querySelector('input[data-key-name="'+item+'"]');
 		const elementPrice = document.querySelector('input[data-key-price="'+item+'"]');
@@ -43,7 +47,8 @@ const Invoices = () => {
 				name: name,
 				phone: phone,
 				items: JSON.stringify(items),
-				total: total
+				total: total,
+				status: status,
 			})
 		});
 		const response = await addInvoice.json();
@@ -79,7 +84,15 @@ const Invoices = () => {
 							<Text color="#888796" fontWeight="bold">€ {total.toFixed(2)}</Text>
 						</Stack>
 					</Flex>
-
+					<Flex>
+						<Stack>
+							<Text color="#888796">Status</Text>
+							<Select placeholder="Select status" onChange={handleStatus} value={status}>
+								<option>Paid</option>
+								<option>Unpaid</option>
+							</Select>
+						</Stack>
+					</Flex>
 					<Text color="#888796" fontSize={20} mt={8}>Invoice Details</Text>
 					<Flex>
 						<Stack>

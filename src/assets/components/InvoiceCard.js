@@ -47,7 +47,7 @@ const InvoiceCard = (props) => {
 					€ {props.total.toFixed(2)}
 				</Text>
 				<Text position="absolute" right="10" mb="-80px" color={props.status == 0 ? "red" : "green"}>
-					{props.status === "1" ? "Paid" : "Unpaid"}
+					{props.status == 1 ? "Paid" : "Unpaid"}
 				</Text>
 			</Flex>
 		</Container>

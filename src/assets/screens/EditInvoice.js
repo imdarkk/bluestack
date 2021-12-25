@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Link, useParams } from "react-router-dom";
-import { Stack, Input, Box, Text, Flex, Container, InputGroup, InputLeftElement } from "@chakra-ui/react";
+import { Stack, Input, Box, Text, Flex, Container, InputGroup, InputLeftElement, Select } from "@chakra-ui/react";
 import { TrashIcon, CloseIcon, LogoEuroIcon } from 'chakra-ui-ionicons';
 import "../styles/createInvoice.scss";
 
@@ -15,6 +15,7 @@ const EditInvoice = () => {
     const [total, setTotal] = useState(0.00);
     const [date, setDate] = useState();
     const [iid, setID] = useState();
+	const [status, setStatus] = useState();
 
 	const handleName = (e) => {
 		setName(e.target.value);
@@ -25,6 +26,9 @@ const EditInvoice = () => {
 	const handleItem = (type, e) => {
 		const item = e.target.name;
 		setItems({...items, [item]: {...items[item], [type]: e.target.value}});
+	}
+	const handleStatus = (e) => {
+		setStatus(e.target.value);
 	}
 	const removeElement = (item) => {
 		const elementName = document.querySelector('input[data-key-name="'+item+'"]');
@@ -47,7 +51,8 @@ const EditInvoice = () => {
 				name: name,
 				phone: phone,
 				items: JSON.stringify(items),
-				total: total
+				total: total,
+				status: status,
 			})
 		});
 		const response = await updateInvoice.json();
@@ -79,7 +84,8 @@ const EditInvoice = () => {
                 setPhone(data[0].phone);
                 setName(data[0].name);
                 setDate(data[0].date);
-                setID(data[0].id);
+				setID(data[0].id);
+				setStatus(data[0].status);
             } catch (e) {
                 alert(e);
             }
@@ -111,7 +117,15 @@ const EditInvoice = () => {
 							<Text color="#888796" fontWeight="bold">€ {total.toFixed(2)}</Text>
 						</Stack>
 					</Flex>
-
+					<Flex>
+						<Stack>
+							<Text color="#888796">Status</Text>
+							<Select placeholder="Select status" onChange={handleStatus} value={status}>
+								<option>Paid</option>
+								<option>Unpaid</option>
+							</Select>
+						</Stack>
+					</Flex>
 					<Text color="#888796" fontSize={20} mt={8}>Invoice Details</Text>
 					<Flex>
 						<Stack>
