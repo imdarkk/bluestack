@@ -18,6 +18,9 @@ import Invoices from "./screens/Invoices";
 import CreateInvoice from "./screens/CreateInvoice";
 import EditInvoice from "./screens/EditInvoice";
 import InvoiceCustomer from "./screens/InvoiceCustomer";
+import Settings from "./screens/Settings";
+import CreateQuote from "./screens/CreateQuote";
+import ViewChecklistsList from "./screens/ViewChecklistsList";
 
 const UnprotectedRoutes = () => {
     return (
@@ -40,10 +43,12 @@ const ProtectedRoutes = () => {
             <Route exact path="/add/car" component={AddCar} />
             <Route exact path="/tools" component={Tools} />
             <Route exact path="/invoices" component={Invoices} />
+            <Route exact path="/make/quote" component={CreateQuote} />
             <Route path="/edit/:id" component={EditProduct} />
             <Route path="/tool/edit/:id" component={EditTool} />
             <Route path="/manage/employee/:id" component={EditEmployee} />
             <Route exact path="/manage/cars" component={ManageCars} />
+            <Route exact path="/checklists" component={ViewChecklistsList} />
             <Route path="/checklist/:type" component={Checklist} />
             <Route exact path="/add/tools" component={AddTool} />
             <Route exact path="/create/invoice" component={CreateInvoice} />
@@ -51,6 +56,7 @@ const ProtectedRoutes = () => {
             {details.role === "admin" && (
                 <>
                     <Route exact path="/employees" component={Employees} />
+                    <Route exact path="/settings" component={Settings} />
                 </>
             )}
             <Route path="*" component={NotFound} />

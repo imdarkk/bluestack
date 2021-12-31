@@ -39,38 +39,35 @@ const Main = () => {
 				<div className="main-page-content">
 					<Flex className="checklist-wrapper" direction="column">
 						{user.role === "admin" && (
-							<Button
-								mb={5}
-								size="md"
-								w="87vw"
-								colorScheme="teal"
-								onClick={() => history.push("/manage/cars")}
-							>
-								Manage Cars
-							</Button>
+							<>
+								<Button
+									mb={2}
+									size="md"
+									w="87vw"
+									colorScheme="teal"
+									onClick={() => history.push("/manage/cars")}
+								>
+									Manage Cars
+								</Button>
+								<Button
+									mb={5}
+									w="87vw"
+									colorScheme="teal"
+									onClick={() => history.push('/settings')}
+								>
+									Settings
+								</Button>
+							</>
 						)}
 
-						<Text fontWeight="bold" fontSize="22px" mt={5}>
-							Checklists
-						</Text>
 						<Button mt={4} size="md" w="87vw" colorScheme="teal">
-							<Link to="/checklist/acInstall" className="link">
-								A/C Install Checklist
+							<Link to="/checklists" className="link" disabled>
+								Go to checklists
 							</Link>
 						</Button>
 						<Button mt={2} size="md" w="87vw" colorScheme="teal">
-							<Link to="/checklist/acRepair" className="link">
-								A/C Repair Checklist
-							</Link>
-						</Button>
-						<Button mt={2} size="md" w="87vw" colorScheme="teal">
-							<Link to="/checklist/heating" className="link">
-								Heating Repair Checklist
-							</Link>
-						</Button>
-						<Button mt={2} size="md" w="87vw" colorScheme="teal">
-							<Link to="/checklist/plumbing" className="link">
-								Plumbing Repair Checklist
+							<Link to="/make/quote" className="link">
+								Create quote
 							</Link>
 						</Button>
 

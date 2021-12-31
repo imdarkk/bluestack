@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from "react";
-import { useParams } from "react-router-dom";
+import { useParams, useHistory } from "react-router-dom";
+import { CloseIcon } from 'chakra-ui-ionicons';
 
 // Checklists
 import ACRepairCheck from "../components/ACRepairCheck";
@@ -12,8 +13,10 @@ import { Container } from "@chakra-ui/react";
 
 const Checklist = () => {
     const { type } = useParams();
+    const history = useHistory();
     return (
         <Container bg="#10151A" maxW="100vw" h="100vh" color="white">
+            <CloseIcon position="absolute" top="15px" right="15px" w={7} h={7} onClick={() => history.goBack()} />
             {type == "acRepair" && <ACRepairCheck />}
             {type == "acInstall" && <ACInstallCheck />}
             {type == "heating" && <HeatingCheck />}

@@ -5,11 +5,15 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { AuthProvider } from "./assets/auth/auth-context";
 import { ChakraProvider } from "@chakra-ui/react";
+import LocalizationProvider from '@mui/lab/LocalizationProvider';
+import AdapterDateFns from '@mui/lab/AdapterDateFns';
 
 ReactDOM.render(
 	<ChakraProvider>
 		<AuthProvider>
-			<App />
+			<LocalizationProvider dateAdapter={AdapterDateFns}>
+				<App />
+			</LocalizationProvider>
 		</AuthProvider>
 	</ChakraProvider>,
 	document.getElementById("root")
